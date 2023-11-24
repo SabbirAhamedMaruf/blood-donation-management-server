@@ -1,4 +1,5 @@
 const express = require("express");
+const databaseConnection = require("./src/db/database");
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -19,6 +20,7 @@ app.use((err,req,res,next)=>{
 
 const main = async()=>{
     // connection request for database
+    await databaseConnection();
     app.listen(port,()=>{
         console.log("Log: Server is currently running on =",port);
     })
