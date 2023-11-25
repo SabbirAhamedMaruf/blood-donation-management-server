@@ -6,6 +6,7 @@ const port = process.env.PORT || 5000;
 // Router information
 const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
+const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
 
 // Adding external connection using cors
 applyCorsConnection(app);
@@ -13,6 +14,7 @@ applyCorsConnection(app);
 // Adding routes connection
 app.use(userRoutes);
 app.use(districtsRoutes);
+app.use(upazilasRoutes);
 
 // Server config
 app.get("/", async (req, res) => {

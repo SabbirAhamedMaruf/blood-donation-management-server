@@ -10,7 +10,7 @@ const districtsController = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       success: false,
-      message: "Error adding getting district data on database!",
+      message: "Error getting district data on database!",
     });
   }
 };
