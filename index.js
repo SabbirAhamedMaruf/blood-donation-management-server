@@ -7,6 +7,7 @@ const port = process.env.PORT || 5000;
 const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
 const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
+const donationRoutes = require("./src/routes/donation/donationRoutes")
 
 // Adding external connection using cors
 applyCorsConnection(app);
@@ -15,6 +16,7 @@ applyCorsConnection(app);
 app.use(userRoutes);
 app.use(districtsRoutes);
 app.use(upazilasRoutes);
+app.use(donationRoutes);
 
 // Server config
 app.get("/", async (req, res) => {
