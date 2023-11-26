@@ -5,8 +5,6 @@ const userUpdateProfileController = async (req, res) => {
     const userUpdatedData = req.body;
     const { name, photo, district, upazila, bloodgroup } = userUpdatedData;
     const userId = req.params.id;
-    // console.log(name, photo, district, upazila, bloodgroup);
-    // console.log(userUpdatedData,userId)
     const result = await usermodel.updateOne(
       {_id: userId},
       {
