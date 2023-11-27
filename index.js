@@ -4,6 +4,7 @@ const applyCorsConnection = require("./src/middleware/corsPolicy");
 const app = express();
 const port = process.env.PORT || 5000;
 // Router information
+const authenticationRoutes = require("./src/routes/authentication/authenticationRoutes");
 const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
 const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
@@ -13,6 +14,7 @@ const donationRoutes = require("./src/routes/donation/donationRoutes")
 applyCorsConnection(app);
 
 // Adding routes connection
+app.use(authenticationRoutes);
 app.use(userRoutes);
 app.use(districtsRoutes);
 app.use(upazilasRoutes);

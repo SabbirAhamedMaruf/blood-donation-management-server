@@ -1,3 +1,4 @@
+const deleteDonationDataController = require("../../api/donation/deleteDonationDataController");
 const donationEntryController = require("../../api/donation/donationController");
 const fetchDonorDonationController = require("../../api/donation/fetchDonorDonationController");
 const getSingleDonationDataController = require("../../api/donation/getSingleDonationDataController");
@@ -10,6 +11,8 @@ router.get("/fetchdonordonation",fetchDonorDonationController);
 // get single donation data
 router.get("/getsingledonationdata",getSingleDonationDataController);
 // update single donation data
-router.patch("/updatedonationrequestsdata",updateDonationDataController)
+router.patch("/updatedonationrequestsdata",updateDonationDataController);
+// delete donation request data
+router.delete("/deletedonationrequestsdata",deleteDonationDataController)
 
 module.exports = router;
