@@ -1,10 +1,14 @@
 const donationModel = require("../../model/donation/donationModel");
-const fetchDonorDonationController = async (req, res) => {
+const fetchDonationDataByPagination = async (req, res) => {
   const donorEmail = req.query.email;
+  const currentPage = req.query.currentpage;
+  const catagory = req.query.catagory;
   try {
     const result = await donationModel
-      .find({ requesteremail: { $ne: donorEmail } })
-      .sort({ _id: -1 });
+      .find({ requesteremail: donorEmail ,status:catagory})
+      .sort({ _id: -1 })
+      .skip(currentPage * 3)
+      .limit(3);
     res.status(201).json({
       success: true,
       message: "donation data fetched successfully!",
@@ -17,4 +21,4 @@ const fetchDonorDonationController = async (req, res) => {
     });
   }
 };
-module.exports = fetchDonorDonationController;
+module.exports = fetchDonationDataByPagination;

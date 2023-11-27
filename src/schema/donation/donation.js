@@ -45,6 +45,14 @@ const donationSchema = new Schema({
     type: String,
     required: true,
   },
+  donorname: {
+    type: String,
+    required: true,
+  },
+  donoremail: {
+    type: String,
+    required: true,
+  },
   status: {
     type: String,
     required: true,

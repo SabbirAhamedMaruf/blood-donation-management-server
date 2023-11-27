@@ -1,9 +1,9 @@
 const donationModel = require("../../model/donation/donationModel");
-const fetchDonorDonationController = async (req, res) => {
+const mydonationrequest = async (req, res) => {
   const donorEmail = req.query.email;
   try {
     const result = await donationModel
-      .find({ requesteremail: { $ne: donorEmail } })
+      .find({ requesteremail: donorEmail })
       .sort({ _id: -1 });
     res.status(201).json({
       success: true,
@@ -17,4 +17,4 @@ const fetchDonorDonationController = async (req, res) => {
     });
   }
 };
-module.exports = fetchDonorDonationController;
+module.exports = mydonationrequest;
