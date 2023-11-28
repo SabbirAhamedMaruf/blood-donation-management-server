@@ -1,7 +1,6 @@
 const usermodel = require("../../model/user/userModel");
 
 const userDashboardController = async (req, res) => {
-  console.log("Inside userDashboardController")
   try {
     const currentUserEmail = req.query.email;
     const userData = await usermodel.findOne({ email: currentUserEmail });

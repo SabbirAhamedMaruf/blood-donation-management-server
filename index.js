@@ -6,6 +6,8 @@ const port = process.env.PORT || 5000;
 
 // Router information
 const authenticationRoutes = require("./src/routes/authentication/authenticationRoutes");
+const paymentRoutes = require("./src/routes/payment/paymentRoutes");
+const adminRoutes = require("./src/routes/admin/adminroutes");
 const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
 const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
@@ -16,6 +18,8 @@ applyCorsConnection(app);
 
 // Adding routes connection
 app.use(authenticationRoutes);
+app.use(paymentRoutes);
+app.use(adminRoutes);
 app.use(userRoutes);
 app.use(districtsRoutes);
 app.use(upazilasRoutes);
