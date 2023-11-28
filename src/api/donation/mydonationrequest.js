@@ -1,15 +1,22 @@
 const donationModel = require("../../model/donation/donationModel");
 const mydonationrequest = async (req, res) => {
-  const donorEmail = req.query.email;
+  const email = req.query.email;
   try {
-    const result = await donationModel
-      .find({ requesteremail: donorEmail })
-      .sort({ _id: -1 });
-    res.status(201).json({
-      success: true,
-      message: "donation data fetched successfully!",
-      data: result,
-    });
+    if (req.decoded.email === email) {
+      const result = await donationModel
+        .find({ requesteremail: email })
+        .sort({ _id: -1 });
+      res.status(201).json({
+        success: true,
+        message: "donation data fetched successfully!",
+        data: result,
+      });
+    } else {
+      res.status(401).json({
+        success: true,
+        message: "unauthorized access",
+      });
+    }
   } catch {
     res.status(500).json({
       success: false,

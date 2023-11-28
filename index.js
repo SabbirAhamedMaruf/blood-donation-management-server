@@ -3,6 +3,7 @@ const databaseConnection = require("./src/db/database");
 const applyCorsConnection = require("./src/middleware/corsPolicy");
 const app = express();
 const port = process.env.PORT || 5000;
+
 // Router information
 const authenticationRoutes = require("./src/routes/authentication/authenticationRoutes");
 const userRoutes = require("./src/routes/user/userRoutes");

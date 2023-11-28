@@ -7,26 +7,50 @@ const fetchDonorDonationController = require("../../api/donation/fetchDonorDonat
 const getSingleDonationDataController = require("../../api/donation/getSingleDonationDataController");
 const mydonationrequest = require("../../api/donation/mydonationrequest");
 const updateDonationDataController = require("../../api/donation/updateDonationDataController");
+const verifyToken = require("../../middleware/verifytoken");
 const router = require("express").Router();
-// donation entry
-router.post("/createdonationrequests", donationEntryController);
-// donation data fetch
-router.get("/fetchdonordonation", fetchDonorDonationController);
-// get single donation data
-router.get("/getsingledonationdata", getSingleDonationDataController);
-// update single donation data
-router.patch("/updatedonationrequestsdata", updateDonationDataController);
-// delete donation request data
-router.delete("/deletedonationrequestsdata", deleteDonationDataController);
-// donate blood
-router.patch("/donateblood", donateBloodController);
-// confirm donation
-router.patch("/confrimdonation", confrimdonationController);
 
-// user (donor) own request
-router.get("/mydonationrequest",mydonationrequest);
+// > create donation page dashboard (ok)
+router.post("/createdonationrequests", verifyToken, donationEntryController);
 
-// fetching data by pagination
-router.get("/fetchdatabypagination",fetchDonationDataByPagination)
+// > custom api useDonorDonationdata for Home page(dashboard) (ok)
+router.get("/fetchdonordonation", verifyToken, fetchDonorDonationController);
+
+//> get single donation data (during view details from) dashboard home (ok)
+router.get(
+  "/getsingledonationdata",
+  verifyToken,
+  getSingleDonationDataController
+);
+
+//> update single donation data during update a donation data after clicking view edit button
+router.patch(
+  "/updatedonationrequestsdata",
+  verifyToken,
+  updateDonationDataController
+);
+
+//> Delete own donation entry my donation request (dashboard) (ok)
+router.delete(
+  "/deletedonationrequestsdata",
+  verifyToken,
+  deleteDonationDataController
+);
+
+//> donate blood on user homepage under details button. (ok)
+router.patch("/donateblood", verifyToken, donateBloodController);
+
+//> confirm donation on donor home and donor donation (dashboard ) (ok)
+router.patch("/confrimdonation", verifyToken, confrimdonationController);
+
+// > custom api usemydonationdata (ok)
+router.get("/mydonationrequest", verifyToken, mydonationrequest);
+
+//> fetching data by pagination of my donation request page (dashboard) ok
+router.get(
+  "/fetchdatabypagination",
+  verifyToken,
+  fetchDonationDataByPagination
+);
 
 module.exports = router;

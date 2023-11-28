@@ -1,8 +1,6 @@
 const userModel = require("../../model/user/userModel")
 
 const userController = async (req, res) => {
-  // const userData = req.body;
-  console.log(req.body)
   const newUserData = new userModel(req.body);
   try {
     await newUserData.save();
