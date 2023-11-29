@@ -2,6 +2,7 @@ const confrimdonationController = require("../../api/donation/confrimdonationCon
 const deleteDonationDataController = require("../../api/donation/deleteDonationDataController");
 const donateBloodController = require("../../api/donation/donateBloodController");
 const donationEntryController = require("../../api/donation/donationController");
+const donationRequestPageController = require("../../api/donation/donationRequestPageController");
 const fetchDonationDataByPagination = require("../../api/donation/fetchDOnationDataByPagination");
 const fetchDonorDonationController = require("../../api/donation/fetchDonorDonationController");
 const getSingleDonationDataController = require("../../api/donation/getSingleDonationDataController");
@@ -53,4 +54,7 @@ router.get(
   fetchDonationDataByPagination
 );
 
+
+// DonationRequest Page
+router.get("/donationRequest",donationRequestPageController)
 module.exports = router;

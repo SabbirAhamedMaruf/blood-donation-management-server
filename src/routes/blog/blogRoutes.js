@@ -13,7 +13,7 @@ router.post("/add-my-blog",verifyToken, addMyBlogController);
 router.get("/get-blog-data",getBlogsData);
 
 // modified blog status
-router.patch("/update-blog-status",verifyToken,updateMyBlogsStatus);
+router.patch("/update-blog-status",verifyToken,verifyAdmin,updateMyBlogsStatus);
 
 // delete current blog
 router.delete("/delete-current-blog",verifyToken,verifyAdmin,deleteCurrentBlogController)

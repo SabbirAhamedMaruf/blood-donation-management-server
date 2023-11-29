@@ -40,10 +40,10 @@ router.patch(
     manageUserRoleController
   );
 
-router.get("/getalldonation",verifyToken,verifyAdmin,getAllDonationDataForHook)
+router.get("/getalldonation",verifyToken,getAllDonationDataForHook)
 
 
 // get all donation
-router.get("/fetch-all-donation-pagiation",verifyToken,verifyAdmin,fetchAllDonationController)
+router.get("/fetch-all-donation-pagiation",verifyToken,fetchAllDonationController)
 
 module.exports = router;
