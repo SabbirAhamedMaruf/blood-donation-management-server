@@ -11,7 +11,8 @@ const adminRoutes = require("./src/routes/admin/adminroutes");
 const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
 const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
-const donationRoutes = require("./src/routes/donation/donationRoutes")
+const donationRoutes = require("./src/routes/donation/donationRoutes");
+const blogRoutes = require("./src/routes/blog/blogRoutes")
 
 // Adding external connection using cors
 applyCorsConnection(app);
@@ -24,6 +25,7 @@ app.use(userRoutes);
 app.use(districtsRoutes);
 app.use(upazilasRoutes);
 app.use(donationRoutes);
+app.use(blogRoutes);
 
 // Server config
 app.get("/", async (req, res) => {
