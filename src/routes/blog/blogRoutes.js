@@ -7,13 +7,13 @@ const verifyToken = require("../../middleware/verifytoken");
 const router = require("express").Router();
 
 // save blog data
-router.post("/add-my-blog", addMyBlogController);
+router.post("/add-my-blog",verifyToken, addMyBlogController);
 
 // get blog data 
 router.get("/get-blog-data",getBlogsData);
 
 // modified blog status
-router.patch("/update-blog-status",updateMyBlogsStatus);
+router.patch("/update-blog-status",verifyToken,updateMyBlogsStatus);
 
 // delete current blog
 router.delete("/delete-current-blog",verifyToken,verifyAdmin,deleteCurrentBlogController)
