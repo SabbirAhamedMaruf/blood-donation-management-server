@@ -1,7 +1,10 @@
+require("dotenv").config();
 const express = require("express");
 const databaseConnection = require("./src/db/database");
 const applyCorsConnection = require("./src/middleware/corsPolicy");
 const app = express();
+const http = require("http");
+const server = http.createServer(app);
 const port = process.env.PORT || 5000;
 
 // Router information
@@ -13,7 +16,8 @@ const userRoutes = require("./src/routes/user/userRoutes");
 const districtsRoutes = require("./src/routes/location/districtsRoutes");
 const upazilasRoutes = require("./src/routes/location/upazilasRoutes");
 const donationRoutes = require("./src/routes/donation/donationRoutes");
-const blogRoutes = require("./src/routes/blog/blogRoutes")
+const blogRoutes = require("./src/routes/blog/blogRoutes");
+const { Server } = require("https");
 
 // Adding external connection using cors
 applyCorsConnection(app);
@@ -47,7 +51,7 @@ app.use((err, req, res, next) => {
 const main = async () => {
   // connection request for database
   await databaseConnection();
-  app.listen(port, () => {
+  server.listen(port, () => {
     console.log("Log: Server is currently running on =", port);
   });
 };

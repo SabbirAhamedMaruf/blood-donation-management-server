@@ -6,7 +6,7 @@ const upazilasController = async (req, res) => {
     const userDistricts = req.query.userDistricts;
     districtsModel.findOne({ name: userDistricts }).then((result) => {
       upazilasModel
-        .find({ district_id: result.district_id })
+        .find({ district_id: result?.district_id })
         .then((upazilaResult) => {
           res.status(201).json({
             success: true,
