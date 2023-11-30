@@ -4,7 +4,7 @@ const fetchDonorDonationController = async (req, res) => {
   try {
     if (req.decoded.email === email) {
       const result = await donationModel
-        .find({ requesteremail: { $ne: email } })
+        .find({ requesteremail: email })
         .sort({ _id: -1 });
       res.status(201).json({
         success: true,

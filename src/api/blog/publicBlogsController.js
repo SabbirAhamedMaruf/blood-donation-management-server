@@ -2,7 +2,11 @@ const blogModel = require("../../model/blog/blogModel");
 
 const publicBlogsController = async (req, res) => {
   try {
-    const blogsData = await blogModel.find().sort({ _id: -1 });
+    const blogsData = await blogModel
+      .find({
+        status: "publish",
+      })
+      .sort({ _id: -1 });
     res.status(201).json({
       success: true,
       message: "Blog added successfully!",

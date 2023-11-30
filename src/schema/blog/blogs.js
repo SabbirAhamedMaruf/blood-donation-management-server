@@ -31,6 +31,10 @@ const blogSchema = new Schema({
     type: String,
     required: true,
   },
+  featured: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = blogSchema;

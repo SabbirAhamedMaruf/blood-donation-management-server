@@ -7,7 +7,6 @@ const fetchDonationDataByPagination = async (req, res) => {
     if (req.decoded.email === email) {
       const result = await donationModel
         .find({ requesteremail: email, status: catagory })
-        .sort({ _id: -1 })
         .skip(currentPage * 3)
         .limit(3);
       res.status(201).json({
